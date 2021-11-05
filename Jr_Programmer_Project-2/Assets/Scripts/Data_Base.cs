@@ -8,7 +8,7 @@ public class Data_Base : MonoBehaviour
 
     public string Player_Name;
 
-    private void Awake()
+    public void Awake()
     {
         if(instance!=null)
         {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Rigidbody rb;
+    private float speed=80f;
 
     private void Awake()
     {
@@ -13,7 +14,11 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        rb.AddForce(Vector3.back);
+        rb.AddForce(Vector3.back*speed*Time.deltaTime);
+        if(transform.position.z<-7f)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 

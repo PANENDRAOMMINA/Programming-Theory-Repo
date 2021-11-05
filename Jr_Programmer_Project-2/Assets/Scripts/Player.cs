@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Move();
-
     }
 
     private void Move()
@@ -24,6 +23,18 @@ public class Player : MonoBehaviour
 
         Vector3 v = new Vector3(InputX, 0, InputZ);
 
-        rb.AddForce(v);
+        rb.velocity = v;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Finish"))
+        {
+            FindObjectOfType<GameManager>().win();
+        }
+        if(other.gameObject.CompareTag("Bullet"))
+        {
+            FindObjectOfType<GameManager>().Game_Over();
+        }
     }
 }
